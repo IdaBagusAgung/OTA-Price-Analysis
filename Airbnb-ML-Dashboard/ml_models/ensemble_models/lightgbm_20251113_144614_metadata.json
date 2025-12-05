@@ -1,0 +1,25 @@
+{
+  "model_name": "lightgbm",
+  "model_type": "ensemble_models",
+  "timestamp": "20251113_144614",
+  "metrics": {
+    "model_name": "LightGBM",
+    "rmse": 31.34268257531922,
+    "mae": 24.971540172073208,
+    "r2": -0.024634285024285996,
+    "mse": 982.363751017219
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\ensemble_models\\lightgbm_20251113_144614.pkl",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

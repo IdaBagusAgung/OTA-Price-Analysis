@@ -1,0 +1,25 @@
+{
+  "model_name": "xgboost",
+  "model_type": "ensemble_models",
+  "timestamp": "20251113_144614",
+  "metrics": {
+    "model_name": "XGBoost",
+    "rmse": 34.55473815540683,
+    "mae": 27.08429086376807,
+    "r2": -0.24540833405152873,
+    "mse": 1194.029928988729
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\ensemble_models\\xgboost_20251113_144614.pkl",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

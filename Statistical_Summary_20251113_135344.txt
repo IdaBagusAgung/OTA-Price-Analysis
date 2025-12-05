@@ -1,0 +1,12 @@
+AIRBNB BALI STATISTICAL ANALYSIS SUMMARY
+=============================================
+
+Analysis Date: 2025-11-13 13:53:44
+Sample Size: 800 records
+Tests Completed: 4
+
+KEY FINDINGS:
+- normality: 3.1299140424664793e-83
+- ttest_weekend_vs_weekday: 0.6346226047129028
+- ttest_season: 0.4632393011440803
+- correlation_dow: -0.059935647728249705

@@ -1,0 +1,40 @@
+{
+  "currency": {
+    "classes": [
+      "USD"
+    ],
+    "mapping": {
+      "USD": 0
+    }
+  },
+  "locale": {
+    "classes": [
+      "en-US"
+    ],
+    "mapping": {
+      "en-US": 0
+    }
+  },
+  "season": {
+    "classes": [
+      "Fall",
+      "Spring",
+      "Summer",
+      "Winter"
+    ],
+    "mapping": {
+      "Fall": 0,
+      "Spring": 1,
+      "Summer": 2,
+      "Winter": 3
+    }
+  },
+  "stay_category": {
+    "classes": [
+      "Medium"
+    ],
+    "mapping": {
+      "Medium": 0
+    }
+  }
+}

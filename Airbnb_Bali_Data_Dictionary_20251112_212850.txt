@@ -1,0 +1,42 @@
+AIRBNB BALI DATA DICTIONARY
+==================================================
+
+room_id:
+    Unique identifier for the Airbnb property
+
+check_in_date:
+    Guest check-in date (YYYY-MM-DD format)
+
+check_out_date:
+    Guest check-out date (YYYY-MM-DD format)
+
+stay_duration:
+    Length of stay in days
+
+locale:
+    Language/country locale setting (e.g., en-US)
+
+currency:
+    Currency used for pricing (e.g., USD)
+
+check_in_year:
+    Year of check-in
+
+check_in_month:
+    Month of check-in (1-12)
+
+check_in_day_of_week:
+    Day of week for check-in (0=Monday, 6=Sunday)
+
+check_in_week_of_year:
+    Week number of the year for check-in
+
+full_url:
+    Complete Airbnb URL for the booking
+
+data_extraction_date:
+    Date when data was processed
+
+analysis_version:
+    Version of the analysis
+

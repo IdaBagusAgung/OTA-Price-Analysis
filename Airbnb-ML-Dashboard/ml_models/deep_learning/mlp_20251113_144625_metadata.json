@@ -1,0 +1,25 @@
+{
+  "model_name": "mlp",
+  "model_type": "deep_learning",
+  "timestamp": "20251113_144625",
+  "metrics": {
+    "model_name": "Multi-layer Perceptron",
+    "rmse": 30.756834271387895,
+    "mae": 24.340038214586453,
+    "r2": 0.013312060163802042,
+    "mse": 945.9828543976208
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\mlp_20251113_144625.h5",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

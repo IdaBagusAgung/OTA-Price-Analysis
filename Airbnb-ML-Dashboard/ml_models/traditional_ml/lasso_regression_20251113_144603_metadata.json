@@ -1,0 +1,25 @@
+{
+  "model_name": "lasso_regression",
+  "model_type": "traditional_ml",
+  "timestamp": "20251113_144603",
+  "metrics": {
+    "model_name": "Lasso Regression",
+    "rmse": 29.795286745635238,
+    "mae": 23.61809781412767,
+    "r2": 0.07404113566190573,
+    "mse": 887.7591122546269
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\traditional_ml\\lasso_regression_20251113_144603.pkl",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

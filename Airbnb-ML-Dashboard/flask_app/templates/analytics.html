@@ -1,0 +1,500 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Analytics Dashboard -->
+<section class="hero-section">
+    <div class="container">
+        <h1><i class="fas fa-chart-line"></i> Model Analytics Dashboard</h1>
+        <p class="lead">Comprehensive Performance Metrics from All Trained Models</p>
+    </div>
+</section>
+
+<!-- Summary Statistics -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="mb-0"><i class="fas fa-chart-bar text-primary"></i> Overview Statistics</h2>
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Prediction
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row mb-4">
+            <!-- Total Models -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="metric-icon text-primary mb-3">
+                            <i class="fas fa-robot fa-3x"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark mb-1">{{ analytics.summary_stats.total_models }}</h3>
+                        <p class="text-secondary mb-0">Total Models</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Best R² Score -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="metric-icon text-success mb-3">
+                            <i class="fas fa-medal fa-3x"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark mb-1">{{ "%.4f"|format(analytics.summary_stats.best_r2) }}</h3>
+                        <p class="text-secondary mb-0">Best R² Score</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Average R² Score -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="metric-icon text-info mb-3">
+                            <i class="fas fa-chart-area fa-3x"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark mb-1">{{ "%.4f"|format(analytics.summary_stats.avg_r2) }}</h3>
+                        <p class="text-secondary mb-0">Average R² Score</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Best Model -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="metric-icon text-warning mb-3">
+                            <i class="fas fa-star fa-3x"></i>
+                        </div>
+                        <h6 class="fw-bold text-dark mb-1">{{ analytics.summary_stats.best_model }}</h6>
+                        <p class="text-secondary mb-0">Best Performer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Active Model -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm border-start border-primary border-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-check-circle text-success"></i> Currently Active Model
+                        </h5>
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h4 class="fw-bold text-primary mb-2">{{ analytics.current_model.model_type }}</h4>
+                                <p class="text-muted mb-0">
+                                    <i class="fas fa-clock"></i> 
+                                    {% if analytics.current_model.timestamp %}
+                                        Trained: {{ analytics.current_model.timestamp }}
+                                    {% else %}
+                                        Timestamp: N/A
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <h5 class="fw-bold text-success mb-1">{{ "%.4f"|format(analytics.current_model.r2_score) }}</h5>
+                                        <small class="text-muted">R² Score</small>
+                                    </div>
+                                    <div class="col-4">
+                                        <h5 class="fw-bold text-info mb-1">{{ "%.2f"|format(analytics.current_model.rmse) }}</h5>
+                                        <small class="text-muted">RMSE</small>
+                                    </div>
+                                    <div class="col-4">
+                                        <h5 class="fw-bold text-warning mb-1">{{ "%.2f"|format(analytics.current_model.mae) }}</h5>
+                                        <small class="text-muted">MAE</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Category Performance -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4"><i class="fas fa-layer-group text-primary"></i> Model Categories</h2>
+        <div class="row">
+            {% for category, data in analytics.category_stats.items() %}
+            {% set category_colors = {
+                'traditional_ml': 'primary',
+                'ensemble_models': 'success',
+                'deep_learning': 'danger'
+            } %}
+            {% set category_icons = {
+                'traditional_ml': 'fa-cogs',
+                'ensemble_models': 'fa-project-diagram',
+                'deep_learning': 'fa-brain'
+            } %}
+            {% set color = category_colors.get(category, 'secondary') %}
+            {% set icon = category_icons.get(category, 'fa-robot') %}
+            
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100 border-top border-{{ color }} border-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-{{ color }}">
+                            <i class="fas {{ icon }} me-2"></i>{{ category.replace('_', ' ').title() }}
+                        </h5>
+                        <hr>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span><i class="fas fa-list"></i> Models:</span>
+                                <strong>{{ data.count }}</strong>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span><i class="fas fa-trophy"></i> Best R²:</span>
+                                <strong class="text-{{ color }}">{{ "%.4f"|format(data.best_r2) }}</strong>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-chart-line"></i> Avg R²:</span>
+                                <strong>{{ "%.4f"|format(data.avg_r2) }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- All Models Comparison Table -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4"><i class="fas fa-table text-primary"></i> All Models Performance Comparison</h2>
+        
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>Model Name</th>
+                                <th class="text-center">Category</th>
+                                <th class="text-center">R² Score</th>
+                                <th class="text-center">RMSE</th>
+                                <th class="text-center">MAE</th>
+                                <th class="text-center">Training Time (s)</th>
+                                <th class="text-center">Performance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for model in analytics.all_models %}
+                            <tr {% if model.name == analytics.current_model.model_type %}class="table-success"{% endif %}>
+                                <td class="text-center">
+                                    {{ loop.index }}
+                                    {% if model.name == analytics.current_model.model_type %}
+                                    <i class="fas fa-check-circle text-success ms-1" title="Active Model"></i>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <strong>{{ model.name }}</strong>
+                                    {% if loop.index == 1 %}
+                                    <span class="badge bg-warning text-dark ms-2">
+                                        <i class="fas fa-trophy"></i> Best
+                                    </span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-center">
+                                    {% set category_badges = {
+                                        'traditional_ml': 'primary',
+                                        'ensemble_models': 'success',
+                                        'deep_learning': 'danger'
+                                    } %}
+                                    <span class="badge bg-{{ category_badges.get(model.category, 'secondary') }}">
+                                        {{ model.category.replace('_', ' ').title() }}
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <strong class="{% if model.r2_score >= 0.9 %}text-success{% elif model.r2_score >= 0.8 %}text-info{% else %}text-warning{% endif %}">
+                                        {{ "%.4f"|format(model.r2_score) }}
+                                    </strong>
+                                </td>
+                                <td class="text-center">{{ "%.2f"|format(model.rmse) }}</td>
+                                <td class="text-center">{{ "%.2f"|format(model.mae) }}</td>
+                                <td class="text-center">
+                                    {% if model.training_time > 0 %}
+                                        {{ "%.2f"|format(model.training_time) }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </td>
+                                <td class="text-center">
+                                    {% if model.r2_score >= 0.95 %}
+                                        <span class="badge bg-success">Excellent</span>
+                                    {% elif model.r2_score >= 0.90 %}
+                                        <span class="badge bg-info">Very Good</span>
+                                    {% elif model.r2_score >= 0.85 %}
+                                        <span class="badge bg-primary">Good</span>
+                                    {% elif model.r2_score >= 0.80 %}
+                                        <span class="badge bg-warning text-dark">Fair</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Poor</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Distribution Charts -->
+        <div class="row mt-5">
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-chart-bar"></i> R² Score Distribution</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="r2Chart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-chart-line"></i> Error Metrics (RMSE vs MAE)</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="errorChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Model Performance Insights -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4"><i class="fas fa-lightbulb text-warning"></i> Performance Insights</h2>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100 border-start border-success border-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">
+                            <i class="fas fa-check-double"></i> Strengths
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-star text-warning"></i>
+                                {{ analytics.summary_stats.total_models }} trained models available
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-medal text-warning"></i>
+                                Best R² score: {{ "%.4f"|format(analytics.summary_stats.best_r2) }}
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-chart-line text-warning"></i>
+                                Lowest RMSE: {{ "%.2f"|format(analytics.summary_stats.best_rmse) }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100 border-start border-info border-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-info">
+                            <i class="fas fa-info-circle"></i> Key Metrics
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <strong>Average R²:</strong> {{ "%.4f"|format(analytics.summary_stats.avg_r2) }}
+                            </li>
+                            <li class="mb-2">
+                                <strong>Average RMSE:</strong> {{ "%.2f"|format(analytics.summary_stats.avg_rmse) }}
+                            </li>
+                            <li class="mb-2">
+                                <strong>Average MAE:</strong> {{ "%.2f"|format(analytics.summary_stats.avg_mae) }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100 border-start border-primary border-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">
+                            <i class="fas fa-trophy"></i> Best Model
+                        </h5>
+                        <p class="mb-3">
+                            <strong>{{ analytics.summary_stats.best_model }}</strong>
+                        </p>
+                        <p class="text-muted small mb-0">
+                            This model achieves the highest R² score of 
+                            <strong>{{ "%.4f"|format(analytics.summary_stats.best_r2) }}</strong>,
+                            indicating excellent predictive performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Charts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // R² Score Chart
+    const r2Ctx = document.getElementById('r2Chart').getContext('2d');
+    const r2Chart = new Chart(r2Ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                {% for model in analytics.all_models %}
+                    '{{ model.name }}'{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ],
+            datasets: [{
+                label: 'R² Score',
+                data: [
+                    {% for model in analytics.all_models %}
+                        {{ model.r2_score }}{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ],
+                backgroundColor: [
+                    {% for model in analytics.all_models %}
+                        {% if model.r2_score >= 0.95 %}
+                            'rgba(25, 135, 84, 0.7)'
+                        {% elif model.r2_score >= 0.90 %}
+                            'rgba(13, 202, 240, 0.7)'
+                        {% elif model.r2_score >= 0.85 %}
+                            'rgba(13, 110, 253, 0.7)'
+                        {% else %}
+                            'rgba(255, 193, 7, 0.7)'
+                        {% endif %}
+                        {% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ],
+                borderColor: [
+                    {% for model in analytics.all_models %}
+                        {% if model.r2_score >= 0.95 %}
+                            'rgba(25, 135, 84, 1)'
+                        {% elif model.r2_score >= 0.90 %}
+                            'rgba(13, 202, 240, 1)'
+                        {% elif model.r2_score >= 0.85 %}
+                            'rgba(13, 110, 253, 1)'
+                        {% else %}
+                            'rgba(255, 193, 7, 1)'
+                        {% endif %}
+                        {% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return 'R² Score: ' + context.parsed.y.toFixed(4);
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 1.0,
+                    title: {
+                        display: true,
+                        text: 'R² Score'
+                    }
+                },
+                x: {
+                    ticks: {
+                        maxRotation: 45,
+                        minRotation: 45
+                    }
+                }
+            }
+        }
+    });
+
+    // Error Metrics Chart
+    const errorCtx = document.getElementById('errorChart').getContext('2d');
+    const errorChart = new Chart(errorCtx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Models',
+                data: [
+                    {% for model in analytics.all_models %}
+                        {
+                            x: {{ model.rmse }},
+                            y: {{ model.mae }},
+                            label: '{{ model.name }}'
+                        }{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ],
+                backgroundColor: 'rgba(13, 110, 253, 0.5)',
+                borderColor: 'rgba(13, 110, 253, 1)',
+                borderWidth: 2,
+                pointRadius: 6,
+                pointHoverRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.raw.label + 
+                                   '\nRMSE: ' + context.parsed.x.toFixed(2) +
+                                   '\nMAE: ' + context.parsed.y.toFixed(2);
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'RMSE'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'MAE'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+
+{% endblock %}

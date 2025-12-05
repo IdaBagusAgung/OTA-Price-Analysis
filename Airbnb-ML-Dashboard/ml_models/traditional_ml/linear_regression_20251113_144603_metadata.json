@@ -1,0 +1,25 @@
+{
+  "model_name": "linear_regression",
+  "model_type": "traditional_ml",
+  "timestamp": "20251113_144603",
+  "metrics": {
+    "model_name": "Linear Regression",
+    "rmse": 30.870242763486328,
+    "mae": 24.534877266633078,
+    "r2": 0.006022292270633556,
+    "mse": 952.97188827658
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\traditional_ml\\linear_regression_20251113_144603.pkl",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

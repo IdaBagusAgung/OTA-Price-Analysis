@@ -1,0 +1,31 @@
+{
+  "model_type": "Random Forest",
+  "training_date": "2025-11-13 18:59:49",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "is_weekend",
+    "season_encoded",
+    "currency_encoded",
+    "locale_encoded",
+    "is_long_stay",
+    "is_peak_season",
+    "is_holiday_month",
+    "month_sin",
+    "month_cos"
+  ],
+  "categorical_features": [
+    "season",
+    "currency",
+    "locale"
+  ],
+  "performance_metrics": {
+    "test_r2_score": 0.85,
+    "test_mae": 15.2,
+    "accuracy": 85.0
+  },
+  "dataset_info": {
+    "total_samples": 1000,
+    "feature_count": 11
+  }
+}

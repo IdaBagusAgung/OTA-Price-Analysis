@@ -1,0 +1,25 @@
+{
+  "model_name": "cnn_1d",
+  "model_type": "deep_learning",
+  "timestamp": "20251113_144646",
+  "metrics": {
+    "model_name": "CNN-1D",
+    "rmse": 30.730765226331815,
+    "mae": 24.49785886844475,
+    "r2": 0.014983955998813303,
+    "mse": 944.3799313959248
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\cnn_1d_20251113_144646.h5",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

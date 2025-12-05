@@ -1,0 +1,25 @@
+{
+  "model_name": "random_forest",
+  "model_type": "ensemble_models",
+  "timestamp": "20251113_144613",
+  "metrics": {
+    "model_name": "Random Forest",
+    "rmse": 31.34127085918439,
+    "mae": 24.93573627792475,
+    "r2": -0.02454198531937002,
+    "mse": 982.2752590687606
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\ensemble_models\\random_forest_20251113_144613.pkl",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

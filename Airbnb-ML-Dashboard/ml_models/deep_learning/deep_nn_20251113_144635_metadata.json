@@ -1,0 +1,25 @@
+{
+  "model_name": "deep_nn",
+  "model_type": "deep_learning",
+  "timestamp": "20251113_144635",
+  "metrics": {
+    "model_name": "Deep Neural Network",
+    "rmse": 82.38006549279005,
+    "mae": 76.35015037067055,
+    "r2": -6.0784932236673,
+    "mse": 6786.475190596378
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\deep_nn_20251113_144635.h5",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

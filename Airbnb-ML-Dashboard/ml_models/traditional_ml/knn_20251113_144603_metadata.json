@@ -1,0 +1,25 @@
+{
+  "model_name": "knn",
+  "model_type": "traditional_ml",
+  "timestamp": "20251113_144603",
+  "metrics": {
+    "model_name": "K-Nearest Neighbors",
+    "rmse": 35.770908263487485,
+    "mae": 27.377616674100352,
+    "r2": -0.334616500363369,
+    "mse": 1279.5578779948373
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\traditional_ml\\knn_20251113_144603.pkl",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

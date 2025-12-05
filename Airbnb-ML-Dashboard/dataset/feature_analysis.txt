@@ -1,0 +1,37 @@
+AIRBNB BALI - ML FEATURE ANALYSIS
+========================================
+
+TARGET VARIABLE ANALYSIS:
+-------------------------
+Price Statistics:
+  Mean: $81.93
+  Median: $77.20
+  Std Dev: $35.15
+  Range: $20.00 - $234.01
+
+CATEGORICAL FEATURES:
+--------------------
+season: 4 unique values
+  Top values: ['Fall', 'Winter', 'Spring']
+currency: 1 unique values
+  Top values: ['USD']
+locale: 1 unique values
+  Top values: ['en-US']
+
+NUMERIC FEATURES:
+-----------------
+stay_duration:
+  Range: 5 - 7
+  Mean: 5.05
+check_in_month:
+  Range: 1 - 12
+  Mean: 10.55
+is_weekend:
+  Range: 0 - 1
+  Mean: 0.22
+
+DATA QUALITY:
+-------------
+Total records: 833
+Complete records: 833
+Missing data: 0

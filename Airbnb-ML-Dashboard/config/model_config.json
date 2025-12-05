@@ -1,0 +1,67 @@
+{
+  "model_settings": {
+    "default_model": "RandomForest",
+    "model_path": "../ml_models/best_model.pkl",
+    "encoders_path": "../ml_models/feature_encoders.pkl",
+    "scaler_path": "../ml_models/feature_scaler.pkl",
+    "metadata_path": "../ml_models/model_metadata.json",
+    "feature_info_path": "../ml_models/feature_info.json"
+  },
+  "prediction_settings": {
+    "confidence_threshold": 0.7,
+    "price_bounds": {
+      "min_price": 10,
+      "max_price": 1000
+    },
+    "default_values": {
+      "stay_duration": 5,
+      "check_in_month": 6,
+      "season": "Summer",
+      "is_weekend": 0,
+      "currency": "USD",
+      "locale": "en-US"
+    }
+  },
+  "feature_engineering": {
+    "cyclical_features": ["check_in_month"],
+    "binary_features": ["is_weekend", "is_long_stay", "is_peak_season", "is_holiday_month"],
+    "categorical_features": ["season", "currency", "locale"]
+  },
+  "model_training": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "cross_validation_folds": 5,
+    "hyperparameter_tuning": true,
+    "feature_selection": false
+  },
+  "flask_settings": {
+    "debug": true,
+    "host": "localhost",
+    "port": 5000,
+    "static_folder": "static",
+    "template_folder": "templates"
+  },
+  "currency_symbols": {
+    "USD": "$",
+    "EUR": "€",
+    "GBP": "£",
+    "AUD": "A$",
+    "JPY": "¥"
+  },
+  "season_mappings": {
+    "Spring": [3, 4, 5],
+    "Summer": [6, 7, 8],
+    "Fall": [9, 10, 11],
+    "Winter": [12, 1, 2]
+  },
+  "analytics": {
+    "cache_duration": 3600,
+    "update_frequency": "daily",
+    "metrics_to_track": [
+      "prediction_count",
+      "average_predicted_price",
+      "model_accuracy",
+      "user_feedback"
+    ]
+  }
+}

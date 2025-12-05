@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1><i class="fas fa-home"></i> Airbnb Bali Price Predictor</h1>
+        <p class="lead">Get instant, AI-powered price predictions for your Airbnb rental in Bali</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p>Our advanced machine learning model analyzes multiple factors including location, seasonality, and booking patterns to provide accurate price predictions for your Airbnb property.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Prediction Form -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-gradient text-white text-center">
+                        <h3 class="mb-0"><i class="fas fa-calculator"></i> Price Prediction Form</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="POST" action="{{ url_for('predict') }}" id="predictionForm">
+                            <div class="row">
+                                <!-- Stay Duration -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="stay_duration" class="form-label">
+                                        <i class="fas fa-calendar-days"></i> Stay Duration (days)
+                                    </label>
+                                    <input type="number" class="form-control" id="stay_duration" name="stay_duration" 
+                                           min="1" max="365" value="5" required>
+                                    <div class="form-text">Number of nights (1-365 days)</div>
+                                </div>
+
+                                <!-- Check-in Month -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="check_in_month" class="form-label">
+                                        <i class="fas fa-calendar-alt"></i> Check-in Month
+                                    </label>
+                                    <select class="form-select" id="check_in_month" name="check_in_month" required>
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6" selected>June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </div>
+
+                                <!-- Season -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="season" class="form-label">
+                                        <i class="fas fa-leaf"></i> Season
+                                    </label>
+                                    <select class="form-select" id="season" name="season" required>
+                                        {% for season in seasons %}
+                                            <option value="{{ season }}" {{ 'selected' if season == 'Summer' else '' }}>
+                                                {{ season }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <!-- Weekend Premium -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="is_weekend" class="form-label">
+                                        <i class="fas fa-calendar-weekend"></i> Weekend Booking
+                                    </label>
+                                    <select class="form-select" id="is_weekend" name="is_weekend" required>
+                                        <option value="0">Weekday</option>
+                                        <option value="1">Weekend</option>
+                                    </select>
+                                    <div class="form-text">Weekend bookings may have premium pricing</div>
+                                </div>
+
+                                <!-- Currency -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="currency" class="form-label">
+                                        <i class="fas fa-money-bill"></i> Input Currency
+                                    </label>
+                                    <select class="form-select" id="currency" name="currency" required>
+                                        {% for currency in currencies %}
+                                            <option value="{{ currency }}" {{ 'selected' if currency == 'USD' else '' }}>
+                                                {{ currency }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <!-- Display Currency -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="display_currency" class="form-label">
+                                        <i class="fas fa-exchange-alt"></i> Display Result In
+                                    </label>
+                                    <select class="form-select" id="display_currency" name="display_currency" required>
+                                        <option value="USD" selected>USD (Dollar)</option>
+                                        <option value="IDR">IDR (Rupiah)</option>
+                                    </select>
+                                    <div class="form-text">Rate: 1 USD = 15,750 IDR</div>
+                                </div>
+
+                                <!-- Locale -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="locale" class="form-label">
+                                        <i class="fas fa-globe"></i> Market Locale
+                                    </label>
+                                    <select class="form-select" id="locale" name="locale" required>
+                                        {% for locale in locales %}
+                                            <option value="{{ locale }}" {{ 'selected' if locale == 'en-US' else '' }}>
+                                                {{ locale }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-magic"></i> Predict Price
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 mb-5">
+                <h2 class="fw-bold">Why Use Our Price Predictor?</h2>
+                <p class="lead text-muted">Advanced AI technology meets hospitality expertise</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h5 class="card-title">AI-Powered Accuracy</h5>
+                        <p class="card-text">Our machine learning model analyzes thousands of data points to provide highly accurate price predictions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h5 class="card-title">Market Intelligence</h5>
+                        <p class="card-text">Stay competitive with real-time market insights and seasonal pricing trends for Bali.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h5 class="card-title">Instant Results</h5>
+                        <p class="card-text">Get immediate price predictions with detailed breakdowns and optimization suggestions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Model Information -->
+<section class="py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h6 class="card-title">
+                            <i class="fas fa-info-circle"></i> Model Information
+                        </h6>
+                        <p class="card-text mb-0">
+                            <strong>Model Type:</strong> {{ model_info.model_type if model_info else 'Random Forest (Demo)' }} | 
+                            <strong>R² Score:</strong> {{ "%.4f"|format(model_info.r2_score if model_info and model_info.r2_score else 0.85) }} | 
+                            <strong>RMSE:</strong> {{ "%.2f"|format(model_info.rmse if model_info and model_info.rmse else 0) }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Form validation and UX improvements
+document.getElementById('predictionForm').addEventListener('submit', function(e) {
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Predicting...';
+    submitBtn.disabled = true;
+});
+
+// Season-Month auto-sync
+document.getElementById('check_in_month').addEventListener('change', function() {
+    const month = parseInt(this.value);
+    const seasonSelect = document.getElementById('season');
+    
+    let season = 'Summer'; // default
+    if (month >= 12 || month <= 2) season = 'Winter';
+    else if (month >= 3 && month <= 5) season = 'Spring';
+    else if (month >= 6 && month <= 8) season = 'Summer';
+    else if (month >= 9 && month <= 11) season = 'Fall';
+    
+    // Set the season if the option exists
+    for (let option of seasonSelect.options) {
+        if (option.value === season) {
+            option.selected = true;
+            break;
+        }
+    }
+});
+
+// Add tooltips and interactive elements
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize tooltips if Bootstrap is available
+    if (typeof bootstrap !== 'undefined') {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    }
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{
+  "model_name": "Optimized XGBoost",
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\production_model_20251113_145825.pkl",
+  "performance": {
+    "model_name": "Optimized XGBoost",
+    "r2": 0.04295300461026452,
+    "rmse": 30.2913308608103,
+    "mae": 24.213944108243474
+  },
+  "hyperparameters": {
+    "xgboost": {
+      "colsample_bytree": 0.6,
+      "learning_rate": 0.01,
+      "max_depth": 3,
+      "min_child_weight": 10,
+      "n_estimators": 258,
+      "reg_alpha": 0.0,
+      "reg_lambda": 1.0,
+      "subsample": 0.6
+    },
+    "lightgbm": null,
+    "random_forest": null
+  },
+  "training_details": {
+    "dataset_size": 833,
+    "feature_count": 22,
+    "training_timestamp": "20251113_145825",
+    "cross_validation_folds": 5
+  }
+}

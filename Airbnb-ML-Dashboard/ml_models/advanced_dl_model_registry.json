@@ -1,0 +1,137 @@
+{
+  "best_advanced_dl_model": {
+    "name": "Attention Network",
+    "metrics": {
+      "model_name": "Attention Network",
+      "r2": 0.02551380723990082,
+      "rmse": 30.56606748381457,
+      "mae": 24.427086415547812
+    },
+    "timestamp": "20251113_145005"
+  },
+  "all_advanced_dl_models": [
+    {
+      "model_name": "Attention Network",
+      "r2": 0.02551380723990082,
+      "rmse": 30.56606748381457,
+      "mae": 24.427086415547812
+    },
+    {
+      "model_name": "Advanced DL Ensemble",
+      "r2": -0.01963320274926561,
+      "rmse": 31.26609960826773,
+      "mae": 24.78631990170051
+    },
+    {
+      "model_name": "Autoencoder-based",
+      "r2": -0.08900706931270874,
+      "rmse": 32.312240458124144,
+      "mae": 25.64080907399069
+    },
+    {
+      "model_name": "Wide & Deep",
+      "r2": -0.3656888937924816,
+      "rmse": 36.184919547800654,
+      "mae": 27.445819597644004
+    },
+    {
+      "model_name": "TabNet",
+      "r2": -471.3717697515407,
+      "rmse": 672.9668786270989,
+      "mae": 282.91991227749577
+    }
+  ],
+  "model_architectures": {
+    "wide_deep": {
+      "description": "Wide & Deep architecture combining linear and deep components",
+      "path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\wide_deep_model_20251113_145005.h5",
+      "input_format": "multiple_inputs",
+      "requires_embeddings": true
+    },
+    "attention": {
+      "description": "Multi-head attention mechanism for tabular data",
+      "path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\attention_model_20251113_145005.h5",
+      "input_format": "multiple_inputs",
+      "requires_embeddings": true
+    },
+    "autoencoder_based": {
+      "description": "Feature learning with autoencoder + regressor",
+      "autoencoder_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\autoencoder_20251113_145005.h5",
+      "encoder_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\encoder_20251113_145005.h5",
+      "regressor_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\encoded_regressor_20251113_145005.h5",
+      "input_format": "single_input",
+      "requires_preprocessing": "encoder"
+    },
+    "advanced_ensemble": {
+      "description": "Ensemble of MLP, ResNet, and Highway networks",
+      "path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\ensemble_deep_model_20251113_145005.h5",
+      "input_format": "single_input",
+      "architecture_components": [
+        "mlp",
+        "residual",
+        "highway"
+      ]
+    },
+    "tabnet": {
+      "description": "Google TabNet for tabular deep learning",
+      "path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\deep_learning\\tabnet_model_20251113_145005",
+      "input_format": "numpy_array",
+      "framework": "pytorch",
+      "feature_importance_available": true
+    }
+  },
+  "preprocessing_artifacts": {
+    "numerical_scaler": "StandardScaler fitted on training data",
+    "target_scaler": "StandardScaler for target variable",
+    "label_encoders": "Dictionary of LabelEncoders for categorical variables",
+    "embedding_dimensions": {
+      "season": {
+        "cardinality": 4,
+        "embedding_dim": 2
+      },
+      "locale": {
+        "cardinality": 1,
+        "embedding_dim": 1
+      },
+      "currency": {
+        "cardinality": 1,
+        "embedding_dim": 1
+      }
+    }
+  },
+  "feature_info": {
+    "feature_columns": [
+      "stay_duration",
+      "check_in_month",
+      "check_in_day_of_week",
+      "season",
+      "is_weekend",
+      "locale",
+      "currency",
+      "check_in_year",
+      "check_in_week_of_year"
+    ],
+    "categorical_features": [
+      "season",
+      "locale",
+      "currency"
+    ],
+    "numerical_features": [
+      "stay_duration",
+      "check_in_month",
+      "check_in_day_of_week",
+      "is_weekend",
+      "check_in_year",
+      "check_in_week_of_year"
+    ],
+    "total_features": 9
+  },
+  "training_info": {
+    "dataset_size": 833,
+    "train_size": 532,
+    "val_size": 134,
+    "test_size": 167,
+    "training_timestamp": "20251113_145005",
+    "tensorflow_version": "2.18.0"
+  }
+}

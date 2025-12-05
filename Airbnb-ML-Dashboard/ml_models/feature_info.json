@@ -1,0 +1,42 @@
+{
+  "categorical_encoders": {
+    "season": [
+      "Fall",
+      "Spring",
+      "Summer",
+      "Winter"
+    ],
+    "currency": [
+      "AUD",
+      "EUR",
+      "GBP",
+      "USD"
+    ],
+    "locale": [
+      "de-DE",
+      "en-GB",
+      "en-US",
+      "fr-FR"
+    ]
+  },
+  "feature_columns": [
+    "stay_duration",
+    "check_in_month",
+    "is_weekend",
+    "season_encoded",
+    "currency_encoded",
+    "locale_encoded",
+    "is_long_stay",
+    "is_peak_season",
+    "is_holiday_month",
+    "month_sin",
+    "month_cos"
+  ],
+  "categorical_columns": [
+    "season",
+    "currency",
+    "locale"
+  ],
+  "target_column": "price",
+  "model_type": "Random Forest"
+}

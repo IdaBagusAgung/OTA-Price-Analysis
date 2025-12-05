@@ -1,0 +1,25 @@
+{
+  "model_name": "decision_tree",
+  "model_type": "traditional_ml",
+  "timestamp": "20251113_144603",
+  "metrics": {
+    "model_name": "Decision Tree Regressor",
+    "rmse": 33.376058829647235,
+    "mae": 25.898939972938546,
+    "r2": -0.16189440221333595,
+    "mse": 1113.961303000073
+  },
+  "model_path": "c:\\Users\\proda\\OneDrive\\Documents\\Gus Agung\\PROJECT ISENG\\PROJECT AFTER LULUS\\GYE-Project\\GYE-OTA-ANALYSIS\\Airbnb-ML-Dashboard\\ml_models\\traditional_ml\\decision_tree_20251113_144603.pkl",
+  "features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target": "price"
+}

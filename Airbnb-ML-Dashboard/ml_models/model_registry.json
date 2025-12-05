@@ -1,0 +1,153 @@
+{
+  "best_model": {
+    "name": "Lasso Regression",
+    "metrics": {
+      "model_name": "Lasso Regression",
+      "rmse": 29.795286745635238,
+      "mae": 23.61809781412767,
+      "r2": 0.07404113566190573,
+      "mse": 887.7591122546269
+    },
+    "timestamp": "20251113_144655"
+  },
+  "all_models": [
+    {
+      "model_name": "Lasso Regression",
+      "rmse": 29.795286745635238,
+      "mae": 23.61809781412767,
+      "r2": 0.07404113566190573,
+      "mse": 887.7591122546269
+    },
+    {
+      "model_name": "Support Vector Regression",
+      "rmse": 30.523810551946877,
+      "mae": 24.312877546440827,
+      "r2": 0.028206357223587553,
+      "mse": 931.7030106111436
+    },
+    {
+      "model_name": "CNN-1D",
+      "rmse": 30.730765226331815,
+      "mae": 24.49785886844475,
+      "r2": 0.014983955998813303,
+      "mse": 944.3799313959248
+    },
+    {
+      "model_name": "Multi-layer Perceptron",
+      "rmse": 30.756834271387895,
+      "mae": 24.340038214586453,
+      "r2": 0.013312060163802042,
+      "mse": 945.9828543976208
+    },
+    {
+      "model_name": "Ridge Regression",
+      "rmse": 30.826281822842382,
+      "mae": 24.504800670683025,
+      "r2": 0.00885123549863831,
+      "mse": 950.2596510213026
+    },
+    {
+      "model_name": "Linear Regression",
+      "rmse": 30.870242763486328,
+      "mae": 24.534877266633078,
+      "r2": 0.006022292270633556,
+      "mse": 952.97188827658
+    },
+    {
+      "model_name": "Random Forest",
+      "rmse": 31.34127085918439,
+      "mae": 24.93573627792475,
+      "r2": -0.02454198531937002,
+      "mse": 982.2752590687606
+    },
+    {
+      "model_name": "LightGBM",
+      "rmse": 31.34268257531922,
+      "mae": 24.971540172073208,
+      "r2": -0.024634285024285996,
+      "mse": 982.363751017219
+    },
+    {
+      "model_name": "CatBoost",
+      "rmse": 32.613880714448335,
+      "mae": 25.877743311912095,
+      "r2": -0.10943410341715998,
+      "mse": 1063.6652152562651
+    },
+    {
+      "model_name": "Extra Trees",
+      "rmse": 32.804262730519675,
+      "mae": 26.13851591977311,
+      "r2": -0.12242444859214885,
+      "mse": 1076.1196532929623
+    },
+    {
+      "model_name": "Decision Tree Regressor",
+      "rmse": 33.376058829647235,
+      "mae": 25.898939972938546,
+      "r2": -0.16189440221333595,
+      "mse": 1113.961303000073
+    },
+    {
+      "model_name": "Gradient Boosting",
+      "rmse": 33.589406093060234,
+      "mae": 26.57985702705534,
+      "r2": -0.17679605773919005,
+      "mse": 1128.248201684512
+    },
+    {
+      "model_name": "XGBoost",
+      "rmse": 34.55473815540683,
+      "mae": 27.08429086376807,
+      "r2": -0.24540833405152873,
+      "mse": 1194.029928988729
+    },
+    {
+      "model_name": "K-Nearest Neighbors",
+      "rmse": 35.770908263487485,
+      "mae": 27.377616674100352,
+      "r2": -0.334616500363369,
+      "mse": 1279.5578779948373
+    },
+    {
+      "model_name": "Deep Neural Network",
+      "rmse": 82.38006549279005,
+      "mae": 76.35015037067055,
+      "r2": -6.0784932236673,
+      "mse": 6786.475190596378
+    }
+  ],
+  "feature_columns": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "season",
+    "is_weekend",
+    "locale",
+    "currency",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "target_column": "price",
+  "categorical_features": [
+    "season",
+    "locale",
+    "currency"
+  ],
+  "numerical_features": [
+    "stay_duration",
+    "check_in_month",
+    "check_in_day_of_week",
+    "is_weekend",
+    "check_in_year",
+    "check_in_week_of_year"
+  ],
+  "dataset_info": {
+    "total_samples": 833,
+    "train_samples": 532,
+    "val_samples": 134,
+    "test_samples": 167,
+    "n_features": 9
+  },
+  "training_timestamp": "20251113_144655"
+}

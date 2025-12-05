@@ -1,0 +1,55 @@
+AIRBNB BALI ML DATASET - DATA DICTIONARY
+==================================================
+
+This dataset is prepared for machine learning price prediction.
+Target variable: price (nightly rate)
+Features: stay_duration, season, weekend, locale, currency, etc.
+
+room_id:
+    Unique identifier for the Airbnb property
+
+stay_duration:
+    Length of stay in days (important ML feature)
+
+check_in_month:
+    Month of check-in (1-12, seasonal pattern)
+
+check_in_day_of_week:
+    Day of week (0=Monday, 6=Sunday)
+
+season:
+    Season derived from check-in month (Spring/Summer/Fall/Winter)
+
+is_weekend:
+    Weekend indicator (1=weekend, 0=weekday)
+
+locale:
+    Language/country locale (market segment)
+
+currency:
+    Currency used for pricing (market indicator)
+
+price:
+    Target variable - nightly price in USD equivalent
+
+check_in_date:
+    Guest check-in date
+
+check_out_date:
+    Guest check-out date
+
+check_in_year:
+    Year of check-in
+
+check_in_week_of_year:
+    Week number of the year
+
+full_url:
+    Complete Airbnb URL
+
+data_extraction_date:
+    Analysis processing date
+
+analysis_version:
+    Version of the analysis pipeline
+

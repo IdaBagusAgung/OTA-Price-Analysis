@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+
+{% block title %}About - Airbnb Bali ML Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Header Section -->
+    <div class="row mb-5">
+        <div class="col-lg-12 text-center">
+            <h1 class="display-4"><i class="fas fa-info-circle text-primary"></i> About This Dashboard</h1>
+            <p class="lead text-muted">AI-Powered Airbnb Price Prediction for Bali Properties</p>
+        </div>
+    </div>
+
+    <!-- Project Overview -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-project-diagram"></i> Project Overview</h3>
+                    <p class="card-text">
+                        This dashboard provides intelligent price predictions for Airbnb properties in Bali using advanced machine learning algorithms. 
+                        The system analyzes multiple factors including location, seasonality, property features, and market trends to generate 
+                        accurate pricing recommendations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Information -->
+    <div class="row mb-4">
+        <div class="col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-brain"></i> Model Information</h3>
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Model Type:</strong></td>
+                                    <td>{{ model_info.model_type if model_info.model_type else 'Machine Learning Ensemble' }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>R² Score:</strong></td>
+                                    <td>
+                                        <span class="badge bg-{{ 'success' if model_info.r2_score > 0.7 else 'warning' if model_info.r2_score > 0.5 else 'danger' }}">
+                                            {{ "%.4f"|format(model_info.r2_score) if model_info.r2_score else 'N/A' }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RMSE:</strong></td>
+                                    <td>{{ "%.2f"|format(model_info.rmse) if model_info.rmse else 'N/A' }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>MAE:</strong></td>
+                                    <td>{{ "%.2f"|format(model_info.mae) if model_info.mae else 'N/A' }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Last Updated:</strong></td>
+                                    <td>{{ model_info.timestamp if model_info.timestamp else 'Recent' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-chart-line"></i> Key Features</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Real-time price predictions</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Multi-currency support (USD, IDR, EUR, GBP, AUD)</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Seasonal demand analysis</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Weekend premium calculations</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Market insights and recommendations</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Competitive pricing strategies</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success"></i> Advanced ML algorithms (26+ models trained)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Used -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-cogs"></i> Features Used in Prediction</h3>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <h5><i class="fas fa-calendar-alt text-primary"></i> Temporal Features</h5>
+                            <ul>
+                                <li>Check-in month</li>
+                                <li>Day of week</li>
+                                <li>Season</li>
+                                <li>Weekend indicator</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h5><i class="fas fa-hotel text-success"></i> Booking Features</h5>
+                            <ul>
+                                <li>Stay duration</li>
+                                <li>Guest locale</li>
+                                <li>Currency preference</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h5><i class="fas fa-chart-bar text-info"></i> Engineered Features</h5>
+                            <ul>
+                                <li>Seasonal interactions</li>
+                                <li>Weekend premiums</li>
+                                <li>Cyclical time encoding</li>
+                                <li>Polynomial transformations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technology Stack -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-code"></i> Technology Stack</h3>
+                    <div class="row">
+                        <div class="col-md-3 mb-3 text-center">
+                            <i class="fab fa-python fa-3x text-primary mb-2"></i>
+                            <h6>Python 3.8+</h6>
+                            <small class="text-muted">Core Language</small>
+                        </div>
+                        <div class="col-md-3 mb-3 text-center">
+                            <i class="fas fa-flask fa-3x text-success mb-2"></i>
+                            <h6>Flask</h6>
+                            <small class="text-muted">Web Framework</small>
+                        </div>
+                        <div class="col-md-3 mb-3 text-center">
+                            <i class="fas fa-brain fa-3x text-info mb-2"></i>
+                            <h6>Scikit-learn</h6>
+                            <small class="text-muted">Machine Learning</small>
+                        </div>
+                        <div class="col-md-3 mb-3 text-center">
+                            <i class="fas fa-chart-line fa-3x text-warning mb-2"></i>
+                            <h6>Pandas & NumPy</h6>
+                            <small class="text-muted">Data Processing</small>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4 mb-2">
+                            <strong>Frontend:</strong> Bootstrap 5, Chart.js, Font Awesome
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <strong>Backend:</strong> Flask, Jinja2, Werkzeug
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <strong>ML Stack:</strong> XGBoost, LightGBM, Neural Networks
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Performance -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-trophy"></i> Model Performance</h3>
+                    <p>Our machine learning pipeline includes multiple models trained and optimized:</p>
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3">
+                            <div class="border rounded p-3">
+                                <h4 class="text-primary">6+</h4>
+                                <small>Traditional ML Models</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="border rounded p-3">
+                                <h4 class="text-success">11+</h4>
+                                <small>Ensemble Models</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="border rounded p-3">
+                                <h4 class="text-info">9+</h4>
+                                <small>Deep Learning Models</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="border rounded p-3">
+                                <h4 class="text-warning">26+</h4>
+                                <small>Total Models Trained</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Currency Support -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-money-bill-wave"></i> Multi-Currency Support</h3>
+                    <p>The dashboard supports multiple currencies with real-time conversion rates (as of November 2025):</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    USD (US Dollar)
+                                    <span class="badge bg-primary rounded-pill">1.00</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    IDR (Indonesian Rupiah)
+                                    <span class="badge bg-success rounded-pill">15,750</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    EUR (Euro)
+                                    <span class="badge bg-info rounded-pill">0.92</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    GBP (British Pound)
+                                    <span class="badge bg-warning rounded-pill">0.79</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    AUD (Australian Dollar)
+                                    <span class="badge bg-danger rounded-pill">1.52</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-question-circle"></i> How It Works</h3>
+                    <div class="row">
+                        <div class="col-md-3 text-center mb-3">
+                            <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <h4 class="mb-0">1</h4>
+                            </div>
+                            <h5 class="mt-3">Input Details</h5>
+                            <p class="text-muted">Enter booking information including dates, duration, and preferences</p>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
+                            <div class="rounded-circle bg-success text-white d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <h4 class="mb-0">2</h4>
+                            </div>
+                            <h5 class="mt-3">Feature Engineering</h5>
+                            <p class="text-muted">System processes and transforms data into ML-ready features</p>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
+                            <div class="rounded-circle bg-info text-white d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <h4 class="mb-0">3</h4>
+                            </div>
+                            <h5 class="mt-3">ML Prediction</h5>
+                            <p class="text-muted">Advanced algorithms analyze patterns and generate predictions</p>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
+                            <div class="rounded-circle bg-warning text-white d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <h4 class="mb-0">4</h4>
+                            </div>
+                            <h5 class="mt-3">Results & Insights</h5>
+                            <p class="text-muted">Get price predictions with actionable recommendations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact/Footer -->
+    <div class="row mb-5">
+        <div class="col-lg-12">
+            <div class="card shadow-sm bg-light">
+                <div class="card-body text-center">
+                    <h4><i class="fas fa-rocket"></i> Ready to Optimize Your Pricing?</h4>
+                    <p class="mb-3">Use our AI-powered prediction tool to get competitive pricing recommendations for your Airbnb property in Bali.</p>
+                    <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-calculator"></i> Get Price Prediction
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
