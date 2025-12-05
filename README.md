@@ -826,7 +826,7 @@ gunicorn -w 4 -b 0.0.0.0:8000 flask_app.app:app
 
 If you find this project useful, please consider giving it a ⭐!
 
-**Built with ❤️ for the Bali hospitality community**
+**Created by NgaeDev/GusAgungDev**
 
 *Last Updated: December 5, 2025*
 
